@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+canvas {
+  pointer-events: none;
+}
+
+span.growing {
+    background-color: #fd2c2a;
+  }
+
+  .custom-hr {
+    background-color: black;
+    height: 1px; /* Adjust the height if needed */
+}
+
+body {
+  background-color: #fffafa;
+}
+
+@keyframes hoverSlideIn {
+  0% {
+    background-color: transparent;
+    color: black;
+    height: 100%;
+  }
+  100% {
+    background-color: black;
+    color: white;
+    height: 100%;
+  }
+}
+
+@keyframes hoverSlideOut {
+  0% {
+    background-color: black;
+    color: white;
+    height: 100%;
+  }
+  100% {
+    background-color: transparent;
+    color: black;
+    height: 100%;
+  }
+}
+
+.service-box {
+  position: relative;
+  overflow: hidden;
+  height: auto;
+  transition: all 0.3s ease-in-out;
+}
+
+.service-box:hover {
+  animation: hoverSlideIn 0.5s ease-in forwards;
+}
+
+.service-box p {
+  position: relative;
+  z-index: 2; /* Keeps text above background animation */
+}
+
+.service-box:hover p {
+  color: white; /* Text turns white during hover */
+}
+
+.service-box::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index: 1; /* Background animation below text */
+  transform: translateY(100%);
+  transition: transform 0.5s ease-in-out;
+}
+
+.service-box:hover::after {
+  transform: translateY(0%);
+}
+
